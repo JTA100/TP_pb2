@@ -8,8 +8,8 @@ import org.junit.Test;
 
 import facultadGestion.Alumno;
 import facultadGestion.CicloElectivo;
-import facultadGestion.Materia;
 import facultadGestion.Comision;
+import facultadGestion.Materia;
 import facultadGestion.Profesor;
 
 public class TestAsignacionCursoProfesor {
@@ -49,3 +49,4 @@ public class TestAsignacionCursoProfesor {
 		assertTrue(comision.verificarCantidadP());
 		
 	}
+}

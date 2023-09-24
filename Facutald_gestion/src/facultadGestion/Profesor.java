@@ -33,6 +33,7 @@ public class Profesor {
 	public String toString() {
 		return "Profesor [nombre=" + nombre + ", dni=" + dni + "]";
 	}
+}
 	
 
 	
