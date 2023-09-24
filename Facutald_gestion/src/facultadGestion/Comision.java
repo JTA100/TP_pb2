@@ -20,7 +20,6 @@ public class Comision {
 	public Comision( Integer cantidadDeAlumno, Alumno alumno, Materia materia,
 			Double horarioDeEntrada, Double horarioDeSalida, CicloElectivo cicloElectivo) {
 		this.id = 0;
-		incrementarElIdentificador();
 		this.cantidadDeAlumnos = cantidadDeAlumno;
 		this.alumno = alumno;
 		this.materia = materia;
@@ -50,6 +49,11 @@ public class Comision {
 
 
 
+	
+	@Override
+    public int hashCode() {
+        return id.hashCode();
+    }
 
 
 

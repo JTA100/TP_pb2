@@ -63,9 +63,15 @@ public class CicloElectivo {
 		return false;
 	}
 	
+	@Override
+	public int hashCode() {       
+		return java.util.Objects.hash(fechaInicioCicloElectivo, fechaDeFinalizacionCicloElectivo, inscripcionDeMateriasInicio, inscripcionDeMateriasFinalizacion);
+		    }
+		
         @Override
         public String toString() {
 	return "CicloElectivo [fechaInicioCicloElectivo=" + fechaInicioCicloElectivo + ", fechaDeFinalizacionCicloElectivo="
 			+ fechaDeFinalizacionCicloElectivo + ", inscripcionDeMateriasInicio=" + inscripcionDeMateriasInicio
 			+ ", inscripcionDeMateriasFinalizacion=" + inscripcionDeMateriasFinalizacion + "]";
+}
 }

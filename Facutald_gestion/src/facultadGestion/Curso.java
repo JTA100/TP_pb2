@@ -22,16 +22,6 @@ package facultadGestion;
 			this.alumnos = alumnos;
 		}
 
-
-
-
-
-
-
-
-
-
-
 		public ArrayList<Aula> getAulas() {
 			return aulas;
 		}
@@ -46,4 +36,25 @@ package facultadGestion;
 			return this.aulas.add(aula);
 		}
 
+		
+		public boolean agregarAlumnoAlCurso(Curso curso,AsignacionCursoAlumno asignacionCursoAlumno) {
+			Alumno alumno = asignacionCursoAlumno.getAlumno() ;
+				if(alumno != null && curso != null) {
+					this.alumnos.add(alumno);
+					asignacionCursoAlumno.agregarCurso(curso);
+					return true;
+			}
+				return false;
+		}
+
+
+		public Alumno buscarAlumno(Alumno alumno, AsignacionCursoAlumno asignacionCursoAlumno,Curso curso) {
+			for(int i = 0; i< this.alumnos.size();i++) {
+				if(this.alumnos.get(i).equals(alumno) && asignacionCursoAlumno.getCursos().get(i).equals(curso)) {
+					return this.alumnos.get(i);
+					
+				}
+			}
+			return null;
+		}
 }

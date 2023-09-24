@@ -6,8 +6,10 @@ import java.util.ArrayList;
 public class Universidad {
 	private String nombre;
 	private ArrayList<Alumno> alumnos;
+	private ArrayList<Profesor>profesores;
 	private ArrayList<Aula> aulas;
 	private ArrayList<Materia>materias;
+	private ArrayList<Materia>guardarMateriasAprobada;
 	private ArrayList<Comision>comisiones;
 
 	
@@ -16,6 +18,8 @@ public class Universidad {
 		this.alumnos = new ArrayList<>();
 		this.materias = new ArrayList<>();
 		this.comisiones = new ArrayList<>();
+		this.profesores = new ArrayList<>();
+		this.guardarMateriasAprobada = new ArrayList<>();
 	}
 
 	public ArrayList<Alumno> getAlumnos() {
@@ -23,7 +27,6 @@ public class Universidad {
 	}
 
 	
-
 	public void setAlumnos(ArrayList<Alumno> alumnos) {
 		this.alumnos = alumnos;
 	}
@@ -38,6 +41,23 @@ public class Universidad {
 		       
 	private boolean validarDniAlumno(int dni) {
 	    for (Alumno a : this.alumnos) {
+	        if (a.getDni() == dni) {
+	    		return true;
+	        }
+	    }
+	    return false;
+	}
+	
+	public boolean agregarProfesor(Profesor profesor) {
+	    if (!validarDniPrfesor(profesor.getDni())) {
+	        this.profesores.add(profesor);
+	        return true;
+	    }
+	    return false;
+	}
+		       
+	private boolean validarDniPrfesor(int dni) {
+	    for (Profesor a : this.profesores) {
 	        if (a.getDni() == dni) {
 	    		return true;
 	        }
@@ -90,6 +110,8 @@ public class Universidad {
 		this.materias.add(seguridadYCalidadEnAplicacionesWeb);	
 	}
 	
+	
+	
 	public boolean insribirAlumnoAMateria(Alumno alumno, Materia materia1, Materia materia2, Materia materia3, Materia materia4,Materia materia5,Comision comision) {//Solo se puede anotar en 5 mat debido a los horarios
 		  boolean verificar = false;
 		  final int LIMITE_DE_MATERIAS = 5; // Establece el límite deseado
@@ -123,12 +145,20 @@ public class Universidad {
 		    return verificar;
 	}
 	
+	public boolean guardarMateriaAprobada(Materia informaticaGeneral, Alumno alumno) {
+		this.alumnos.add(alumno);
+		this.guardarMateriasAprobada.add(informaticaGeneral);
+		return true;
+	}
+
 	
-	//Test Aula
+	
+	        //Test Aula
 			public void agregarAula(Aula aula) {
 				this.aulas.add(aula);
 				
 			}
+			
 
 			public Aula obtenerAulaPorNumero(Integer numeroDeAula) {
 				// TODO Auto-generated method stub
@@ -140,7 +170,30 @@ public class Universidad {
 				return null;
 			}
 
+			//Fin del test Aula
+
 			
+			//Test comision
+			public boolean agregarComision(Comision comision) {
+			    if (validarComisionTurnoCicloMateria(comision)) {
+			        return false;
+			    }	    
+			this.comisiones.add(comision);   
+			    return true;
+			}	
 			
+			public boolean validarComisionTurnoCicloMateria(Comision comision) {
+			    for (Comision a : this.comisiones) {
+			        if (a.getMateria().equals(comision.getMateria()) &&
+			            a.getCicloElectivo().equals(comision.getCicloElectivo()) &&
+			            a.getHorarioDeSalida().equals(comision.getHorarioDeSalida()) &&
+			            a.getHorarioDeEntrada().equals(comision.getHorarioDeEntrada())) {
+			        	return true;
+			        }	            
+			    }
+			    return false;
+			}
+			//Fin del Test comision
+
 	
 }
