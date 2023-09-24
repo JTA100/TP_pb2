@@ -2,6 +2,7 @@ package facultadGestion;
 
 import java.util.ArrayList;
 
+
 public class Materia {
 	private String nombre;
 	private Integer codigoMat;
@@ -71,17 +72,5 @@ public class Materia {
 		return "Materia [nombre=" + nombre + ", codigoMat=" + codigoMat + "]";
 	}
 	
-	// Equals y hashCode basados en codigoMat para comparación
-		 @Override
-		    public boolean equals(Object o) {
-		        if (this == o) return true;
-		        if (o == null || getClass() != o.getClass()) return false;
-		        Materia materia = (Materia) o;   
-		return codigoMat.equals(materia.codigoMat);
-		    }
-		 
-		 @Override
-		    public int hashCode() {
-		        return codigoMat.hashCode();
-		    }
 }
+	

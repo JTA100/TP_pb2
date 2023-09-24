@@ -63,27 +63,9 @@ public class CicloElectivo {
 		return false;
 	}
 	
-	// Equals y hashCode basados en las fechas para comparación
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        
-       
-if (o == null || getClass() != o.getClass()) return false;
-        CicloElectivo that = (CicloElectivo) o;
-        return fechaInicioCicloElectivo.equals(that.fechaInicioCicloElectivo) &&
-                fechaDeFinalizacionCicloElectivo.equals(that.fechaDeFinalizacionCicloElectivo) &&
-                inscripcionDeMateriasInicio.equals(that.inscripcionDeMateriasInicio) &&
-                inscripcionDeMateriasFinalizacion.equals(that.inscripcionDeMateriasFinalizacion);
-    }
-
-    
-@Override
-    
-   
-public int hashCode() {
-        
-       
-return java.util.Objects.hash(fechaInicioCicloElectivo, fechaDeFinalizacionCicloElectivo, inscripcionDeMateriasInicio, inscripcionDeMateriasFinalizacion);
-    }
+        @Override
+        public String toString() {
+	return "CicloElectivo [fechaInicioCicloElectivo=" + fechaInicioCicloElectivo + ", fechaDeFinalizacionCicloElectivo="
+			+ fechaDeFinalizacionCicloElectivo + ", inscripcionDeMateriasInicio=" + inscripcionDeMateriasInicio
+			+ ", inscripcionDeMateriasFinalizacion=" + inscripcionDeMateriasFinalizacion + "]";
 }
