@@ -26,6 +26,46 @@ package facultadGestion;
 		}
 
 		
+		public Nota getParcial1() {
+			return parcial1;
+		}
+
+
+		public void setParcial1(Nota parcial1) {
+			this.parcial1 = parcial1;
+		}
+
+
+		public Nota getParcial2() {
+			return parcial2;
+		}
+
+
+		public void setParcial2(Nota parcial2) {
+			this.parcial2 = parcial2;
+		}
+
+
+		public Nota getRecuperatorio() {
+			return recuperatorio;
+		}
+
+
+		public void setRecuperatorio(Nota recuperatorio) {
+			this.recuperatorio = recuperatorio;
+		}
+
+
+		public Nota getFinals() {
+			return finals;
+		}
+
+
+		public void setFinals(Nota finals) {
+			this.finals = finals;
+		}
+
+
 		private void incrementarElIdentificador(){
 			this.id++;
 		}
@@ -86,6 +126,61 @@ package facultadGestion;
 			}
 			return false;
 		}
+		
+	
+
+		public boolean asignarParcial1(Nota nota, Alumno buscar,Curso curso) {
+			for(int i = 0; i < this.cursos.size();i++) {
+				if(this.cursos.get(i).equals(curso) && this.alumno.equals(buscar) ) {
+					setParcial1(nota);
+					return true;
+		}
+	}
+			return false;
+		}
+
+
+	public boolean recursa(Nota parcial1, Nota parcial2, Alumno alumno2, Curso curso2) {
+			Double nota1 = parcial1.getValor();
+			Double nota2 = parcial2.getValor();
+			if(this.cursos.contains(curso2) && this.alumno.equals(alumno2) && nota1 >= 0 && nota1 <= 3 && nota2 >= 0 && nota2 <= 3 ) {
+				return true;
+			}
+			return false;
+		
+		}
+
+
+		public boolean recupera(Nota parcial1, Nota parcial2, Alumno alumno, Curso curso) {
+			Double nota1 = parcial1.getValor();
+			Double nota2 = parcial2.getValor();
+			if(this.cursos.contains(curso) && this.alumno.equals(alumno) && nota1 >= 0 && nota1 <= 6 && nota2 >= 4 && nota2 <= 10  ||  nota2 >= 0 && nota2 <= 6 && nota1 >= 4 && nota1 <= 10 ) {
+				return true;
+			}
+			return false;
+		}
+
+
+		public boolean notaRecuperatorioSiAprueba(Nota recuperatorio, Alumno alumno, Curso curso) {
+			Double notaRecuperatorio = recuperatorio.getValor();
+			if(this.cursos.contains(curso) && this.alumno.equals(alumno) && notaRecuperatorio >= 4 && notaRecuperatorio <= 10) {
+				return true;
+			}
+			return false;
+		}
+
+
+		public boolean notaRecuperatorioEstaEnCondicionDePromocionar(Nota recuperatorio, Nota parcial1, Alumno alumno2,
+				Curso curso) {
+			Double nota1 = parcial1.getValor();
+			Double notaRecuperatorio = recuperatorio.getValor();
+			if(this.cursos.contains(curso) && this.alumno.equals(alumno) && nota1 >= 7 && notaRecuperatorio >= 7) {
+				return true;
+			}
+			return false;
+		}
+		
+
 
 	
 }

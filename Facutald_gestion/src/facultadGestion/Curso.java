@@ -6,11 +6,20 @@ package facultadGestion;
 	public class Curso {
 		private ArrayList<Aula> aulas;
 		private ArrayList<Alumno>alumnos;
+		private Comision comision;
+		public Comision getComision() {
+			return comision;
+		}
+
+		public void setComision(Comision comision) {
+			this.comision = comision;
+		}
 
 		///popop
-		public Curso() {
+		public Curso(Comision comision) {
 			this.aulas = new ArrayList<>();
 			this.alumnos = new ArrayList<>();
+			this.comision = comision;
 		}
 	
 		public ArrayList<Alumno> getAlumnos() {
