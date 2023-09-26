@@ -17,8 +17,6 @@ public class Materia {
 		this.correclativas = new ArrayList<>();
 		}
 	
-	
-
 	public ArrayList<Materia> getCorreclativas() {
 		return correclativas;
 	}
@@ -67,6 +65,20 @@ public class Materia {
 		this.horarioDeSalida = horarioDeSalida;
 	}
 
+	// Equals y hashCode basados en codigoMat para comparación
+		 @Override
+		    public boolean equals(Object o) {
+		        if (this == o) return true;
+		        if (o == null || getClass() != o.getClass()) return false;
+		        Materia materia = (Materia) o;   
+		return codigoMat.equals(materia.codigoMat);
+		    }
+		 
+		 @Override
+		    public int hashCode() {
+		        return codigoMat.hashCode();
+		    }
+		 
 	@Override
 	public String toString() {
 		return "Materia [nombre=" + nombre + ", codigoMat=" + codigoMat + "]";

@@ -4,11 +4,20 @@ public class Profesor {
 	
 	private String nombre;
 	private Integer dni;
+	private String apellido;
 	
-	
-	public Profesor(Integer dni, String nombre) {
+	public Profesor(Integer dni,String apellid, String nombre) {
 		this.nombre = nombre;
 		this.dni = dni;
+		this.apellido = apellido;
+	}
+
+	public String getApellido() {
+		return apellido;
+	}
+
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
 	}
 
 	public String getNombre() {
@@ -31,7 +40,7 @@ public class Profesor {
 
 	@Override
 	public String toString() {
-		return "Profesor [nombre=" + nombre + ", dni=" + dni + "]";
+		return "Profesor [nombre=" + nombre + ", dni=" + dni + ", apellido=" + apellido + "]";
 	}
 }
 	

@@ -8,13 +8,35 @@ public class CicloElectivo {
 	private LocalDate fechaDeFinalizacionCicloElectivo;
 	private LocalDate inscripcionDeMateriasInicio;
 	private LocalDate inscripcionDeMateriasFinalizacion;
+	private String diaDeCursada1;
+	private String diaDeCursada2;
+	
 
 	public CicloElectivo(LocalDate fechaInicioCicloElectivo, LocalDate fechaFinalizacionCicloElectivo,
-			LocalDate inscripcionDeMateriasInicio, LocalDate inscripcionDeMateriasFinalizacion) {
+			LocalDate inscripcionDeMateriasInicio, LocalDate inscripcionDeMateriasFinalizacion,String diaDeCursada1,String diaDeCursada2) {
 		this.fechaInicioCicloElectivo = fechaInicioCicloElectivo;
 		this.fechaDeFinalizacionCicloElectivo = fechaFinalizacionCicloElectivo;
 		this.inscripcionDeMateriasInicio = inscripcionDeMateriasInicio;
 		this.inscripcionDeMateriasFinalizacion = inscripcionDeMateriasFinalizacion;
+		this.diaDeCursada1 = diaDeCursada1;
+		this.diaDeCursada2 = diaDeCursada2;
+		
+	}
+
+	public String getDiaDeCursada1() {
+		return diaDeCursada1;
+	}
+
+	public void setDiaDeCursada1(String diaDeCursada1) {
+		this.diaDeCursada1 = diaDeCursada1;
+	}
+
+	public String getDiaDeCursada2() {
+		return diaDeCursada2;
+	}
+
+	public void setDiaDeCursada2(String diaDeCursada2) {
+		this.diaDeCursada2 = diaDeCursada2;
 	}
 
 	public LocalDate getFechaInicioCicloElectivo() {
@@ -82,6 +104,7 @@ public class CicloElectivo {
 		return "CicloElectivo [fechaInicioCicloElectivo=" + fechaInicioCicloElectivo
 				+ ", fechaDeFinalizacionCicloElectivo=" + fechaDeFinalizacionCicloElectivo
 				+ ", inscripcionDeMateriasInicio=" + inscripcionDeMateriasInicio
-				+ ", inscripcionDeMateriasFinalizacion=" + inscripcionDeMateriasFinalizacion + "]";
+				+ ", inscripcionDeMateriasFinalizacion=" + inscripcionDeMateriasFinalizacion + ", diaDeCursada1="
+				+ diaDeCursada1 + ", diaDeCursada2=" + diaDeCursada2 + "]";
 	}
 }

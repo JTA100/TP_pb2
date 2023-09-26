@@ -2,20 +2,22 @@ package facultadGestion;
 
 import java.util.ArrayList;
 
-import ar.edu.unlam.gestion.Profesor;
-
 public class AsignacionCursoProfesor {
 
 	private Profesor profesor;
 	private Curso curso;
-	private Integer id;
+	private static Integer id = 0;
 	private ArrayList <Profesor> profesores;
 	
 	public AsignacionCursoProfesor(Profesor profesor,Curso curso,Integer id) {
 		this.profesor = profesor;
 		this.curso = curso;
-		this.id = id;
+		incrementadorId();
 		this.profesores = new ArrayList<>();
+	}
+
+	private void incrementadorId() {
+		++id;
 	}
 
 	public Profesor getProfesor() {
@@ -36,10 +38,6 @@ public class AsignacionCursoProfesor {
 
 	public Integer getId() {
 		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
 	}
 
 	@Override

@@ -10,6 +10,7 @@ public class AsignacionCursoAlumno {
 	private Nota recuperatorio;
 	private Nota finals;
 	private ArrayList<Curso> cursos;
+	private Double promedio;
 
 	public AsignacionCursoAlumno(Alumno alumno, Nota nota1, Nota nota2, Nota recuperatorio, Nota finals) {
 		this.alumno = alumno;
@@ -20,6 +21,7 @@ public class AsignacionCursoAlumno {
 		this.recuperatorio = recuperatorio;
 		this.finals = finals;
 		this.cursos = new ArrayList<>();
+		this.promedio = 0.0;
 	}
 
 	public Nota getParcial1() {
@@ -116,7 +118,71 @@ public class AsignacionCursoAlumno {
 		}
 		return false;
 	}
+	
+	public boolean asignarParcial2(Nota nota, Alumno buscar, Curso curso) {
+		for (int i = 0; i < this.cursos.size(); i++) {
+			if (this.cursos.get(i).equals(curso) && this.alumno.equals(buscar)) {
+				setParcial2(nota);
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	
+	public boolean asignarRecuperatorio(Nota nota, Alumno buscar, Curso curso) {
+		for (int i = 0; i < this.cursos.size(); i++) {
+			if (this.cursos.get(i).equals(curso) && this.alumno.equals(buscar)) {
+				setRecuperatorio(nota);
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	
+	public boolean asignarNotaFinal(Nota notaFinals, Alumno buscar, Curso curso) {
+		for (int i = 0; i < this.cursos.size(); i++) {
+			if (this.cursos.get(i).equals(curso) && this.alumno.equals(buscar)) {
+				setFinals(finals);
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public boolean notaFinalSiVaAFinal(Nota parcial1, Nota parcial2, Alumno alumno2, Curso curso2) {
+		Double nota1 = parcial1.getValor();
+		Double nota2 = parcial2.getValor();
+		if (this.cursos.contains(curso2) && this.alumno.equals(alumno2)
+				&& (nota1 >= 4 && nota1 <= 6 || nota2 >= 4 && nota2 <= 6)
+				&& (nota1 >= 7 && nota1 <= 10 || nota2 >= 7 && nota2 <= 10)) {
+			return true;
+		} else if (nota1 >= 4 && nota1 <= 6 && nota2 >= 4 && nota2 <= 6) {
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean notaFinalSiAprobo(Nota finals, Alumno alumno2, Curso curso) {
+		Double valorFinals = finals.getValor();
+		if (this.cursos.contains(curso) && this.alumno.equals(alumno2) && valorFinals >= 4 && valorFinals <= 10) {
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean promociona(Nota parcial1, Nota parcial2, Alumno alumno2, Curso curso2) {
+		Double nota1 = parcial1.getValor();
+		Double nota2 = parcial2.getValor();
+		if (this.cursos.contains(curso2) && this.alumno.equals(alumno2) && nota1 >= 7 && nota1 <= 10 && nota2 >= 7
+				&& nota2 <= 10) {
+			return true;
+		}
+		return false;
+	}
 
+	
 	public boolean recursa(Nota parcial1, Nota parcial2, Alumno alumno2, Curso curso2) {
 		Double nota1 = parcial1.getValor();
 		Double nota2 = parcial2.getValor();
@@ -157,66 +223,31 @@ public class AsignacionCursoAlumno {
 		return false;
 	}
 
-	public boolean notaFinalSiVaAFinal(Nota parcial1, Nota parcial2, Alumno alumno2, Curso curso2) {
-		Double nota1 = parcial1.getValor();
-		Double nota2 = parcial2.getValor();
-		if (this.cursos.contains(curso2) && this.alumno.equals(alumno2)
-				&& (nota1 >= 4 && nota1 <= 6 || nota2 >= 4 && nota2 <= 6)
-				&& (nota1 >= 7 && nota1 <= 10 || nota2 >= 7 && nota2 <= 10)) {
-			return true;
-		} else if (nota1 >= 4 && nota1 <= 6 && nota2 >= 4 && nota2 <= 6) {
-			return true;
+	public Double obtenerPromedio(Integer alumnoDni) {
+		Double resultado = 0.0;
+		if(this.alumno.getDni().equals(alumnoDni)) {
+			resultado = (this.parcial1.getValor() + this.parcial2.getValor()) / 2;
+			this.promedio = resultado;
+				
 		}
-		return false;
+		return resultado;
 	}
 
-	public boolean notaFinalSiAprobo(Nota finals, Alumno alumno2, Curso curso) {
-		Double valorFinals = finals.getValor();
-		if (this.cursos.contains(curso) && this.alumno.equals(alumno2) && valorFinals >= 4 && valorFinals <= 10) {
+
+	public boolean verificarPromedio(Double resultado) {
+		if(this.promedio.equals(resultado)) {
 			return true;
 		}
 		return false;
-	}
-
-	public boolean promociona(Nota parcial1, Nota parcial2, Alumno alumno2, Curso curso2) {
-		Double nota1 = parcial1.getValor();
-		Double nota2 = parcial2.getValor();
-		if (this.cursos.contains(curso2) && this.alumno.equals(alumno2) && nota1 >= 7 && nota1 <= 10 && nota2 >= 7
-				&& nota2 <= 10) {
-			return true;
-		}
-		return false;
-	}
-
-	public boolean asignarParcial2(Nota nota, Alumno buscar, Curso curso) {
-		for (int i = 0; i < this.cursos.size(); i++) {
-			if (this.cursos.get(i).equals(curso) && this.alumno.equals(buscar)) {
-				setParcial2(nota);
-				return true;
-			}
-		}
-		return false;
-	}
-
-	public boolean asignarRecuperatorio(Nota nota, Alumno buscar, Curso curso) {
-		for (int i = 0; i < this.cursos.size(); i++) {
-			if (this.cursos.get(i).equals(curso) && this.alumno.equals(buscar)) {
-				setRecuperatorio(nota);
-				return true;
-			}
-		}
-		return false;
-	}
-
-	public boolean asignarNotaFinal(Nota notaFinals, Alumno buscar, Curso curso) {
-		for (int i = 0; i < this.cursos.size(); i++) {
-			if (this.cursos.get(i).equals(curso) && this.alumno.equals(buscar)) {
-				setFinals(finals);
-				return true;
-			}
-		}
-		return false;
-
-	}
-
+	}	
 }
+
+
+
+	
+	
+
+
+
+	
+

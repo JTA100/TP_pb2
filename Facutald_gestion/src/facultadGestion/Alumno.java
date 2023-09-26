@@ -1,14 +1,21 @@
 package facultadGestion;
 
+import java.util.ArrayList;
+
+
+
 public class Alumno {
 	private String nombre;
 	private String apellido;
 	private Integer dni;
-	
+	private ArrayList<Materia> materiasAprobadas;
+
 	public Alumno(Integer dni, String apellido, String nombre) {
 		this.nombre=nombre;
 		this.apellido=apellido;
 		this.dni=dni;
+		this.materiasAprobadas = new ArrayList<Materia>();
+
 	}
 	
 	
@@ -36,6 +43,10 @@ public class Alumno {
 		this.nombre = nombre;
 	}
 
+	 public void aprobarMateria(Materia materia) {
+	        this.materiasAprobadas.add(materia);
+	    }
+	 
 	@Override
 	public String toString() {
 		return "Alumno [nombre=" + nombre + ", apellido=" + apellido + ", dni=" + dni + "]";

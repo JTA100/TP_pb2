@@ -1,7 +1,7 @@
 package facultadGestion;
 
 public class Aula {
-	private static  Integer id;
+	private static  Integer id = 0;
 	private Integer capacidadDeLugares;
 
 		public Aula( Integer capacidadDeLugares) {
@@ -10,7 +10,6 @@ public class Aula {
 		}
 
 		private static void incrementador(){
-			id = 0;
 			id++;
 		}
 		
